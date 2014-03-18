@@ -16,10 +16,10 @@ module DigistoreApi
 
     config.middleware.use Rack::Cors do
       allow do
-        origins '*'
-        resource '*', :headers => :any, :methods => [:get, :post, :options]
+        origins 'http://localhost:9000'
+        resource '*', :headers => :any, :methods => [:get, :post, :options, :delete, :patch]
       end
     end
-    
+
   end
 end
