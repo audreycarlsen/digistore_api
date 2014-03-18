@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  def index
-    @carts = Cart.all
+  def show
+    @cart = Cart.find(params[:id])
   end
 end

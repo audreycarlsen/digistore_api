@@ -1,3 +1,5 @@
-json.items @items do |item|
-  json.extract! item, :id, :current_price, :quantity, :cart_id, :product_id, :created_at, :updated_at
+json.item @items do |item|
+  json.extract! item, :id, :current_price, :quantity
+  json.cart item.cart_id
+  json.product item.product_id
 end

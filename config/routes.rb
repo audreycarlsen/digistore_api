@@ -1,10 +1,10 @@
 DigistoreApi::Application.routes.draw do
 
   defaults format: :json do
-    get "/products", to: "products#index"
-    get "/items",    to: "items#index"
-    get "/orders",   to: "orders#index"
-    get "/carts",    to: "carts#index"
+    resources :products, defaults: {format: :json}
+    resources :items   , defaults: {format: :json}
+    resources :orders  , defaults: {format: :json}
+    resources :carts   , defaults: {format: :json}
   end
 
 end
