@@ -4,10 +4,8 @@ class CartsController < ApplicationController
   end
 
   def create
-    render "show"
-  end
-
-  def update
+    @cart = Cart.new
+    @cart.save
     render "show"
   end
 end

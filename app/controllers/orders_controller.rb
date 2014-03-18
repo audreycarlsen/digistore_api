@@ -8,6 +8,8 @@ class OrdersController < ApplicationController
   end
 
   def create
+    @order = Order.new(params.require(:order).permit(:cart_id, :name, :email, :zipcode, :exp_date, :cvv))
+    @order.save
     render "show"
   end
 end
