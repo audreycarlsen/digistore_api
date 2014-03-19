@@ -8,8 +8,19 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(params.require(:order).permit(:cart_id, :name, :email, :zipcode, :exp_date, :cvv))
-    @order.save
+    @order = Order.create(
+      cart_id:  order_params[:cart],
+      name:     order_params[:name],
+      email:    order_params[:email],
+      zipcode:  order_params[:zipcode],
+      exp_date: order_params[:exp_date],
+      cvv:      order_params[:cvv])
     render "show"
+  end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:cart, :name, :email, :zipcode, :exp_date, :cvv)
   end
 end
