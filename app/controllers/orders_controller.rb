@@ -8,14 +8,19 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.create(
+    @order = Order.new(
       cart_id:  order_params[:cart],
       name:     order_params[:name],
       email:    order_params[:email],
       zipcode:  order_params[:zipcode],
       exp_date: order_params[:exp_date],
       cvv:      order_params[:cvv])
-    render "show"
+    
+    if @order.save
+      render "show"
+    else
+      render :status => 400
+    end
   end
 
   private
