@@ -1,0 +1,27 @@
+<h2>Order Confirmation</h2>
+
+<p><em>Thank you for your money!</em></p>
+
+<p><strong>Name:</strong>  <%=order.name %> <br>
+<strong>Email:</strong> {{ email }}<br><br></p>
+
+<table class="table">
+  <tr>
+    <th>Item</th>
+    <th>Quantity</th>
+    <th>Unit Price</th>
+  </tr>
+  {{# each cart.items }}
+    <tr>
+      <td>
+        {{# link-to "product" this.product }}
+          <img {{ bind-attr src=this.product.image }} height="50" width="50">
+          {{ product.name }}
+        {{/ link-to }}
+      <td>{{ quantity }}</td>
+      <td>${{ to_dollars subtotal }}</td>
+    </tr>
+  {{/ each }}
+</table>
+
+<strong>Order Total:</strong> ${{ to_dollars cart.total }}
