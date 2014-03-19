@@ -15,8 +15,9 @@ class OrdersController < ApplicationController
       zipcode:  order_params[:zipcode],
       exp_date: order_params[:exp_date],
       cvv:      order_params[:cvv])
-    
+
     if @order.save
+      OrderMailer.confirmation(@order.id).deliver
       render "show"
     else
       render :status => 400
