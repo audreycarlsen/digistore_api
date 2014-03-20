@@ -2,8 +2,8 @@
 
 <p><em>Thank you for your money!</em></p>
 
-<p><strong>Name:</strong>  <%=order.name %> <br>
-<strong>Email:</strong> {{ email }}<br><br></p>
+<p><strong>Name:</strong>  <%= @order.name %> <br>
+<strong>Email:</strong> <%= @order.email %><br><br></p>
 
 <table class="table">
   <tr>
@@ -11,17 +11,11 @@
     <th>Quantity</th>
     <th>Unit Price</th>
   </tr>
-  {{# each cart.items }}
+  <% @order.cart.items.each do |item| %>
     <tr>
-      <td>
-        {{# link-to "product" this.product }}
-          <img {{ bind-attr src=this.product.image }} height="50" width="50">
-          {{ product.name }}
-        {{/ link-to }}
-      <td>{{ quantity }}</td>
-      <td>${{ to_dollars subtotal }}</td>
+      <td><%= item.product.name %></td>
+      <td><%= item.quantity %></td>
+      <td>$<%= item.quantity * item.current_price / 100 %></td>
     </tr>
-  {{/ each }}
+  <% end %>
 </table>
-
-<strong>Order Total:</strong> ${{ to_dollars cart.total }}
