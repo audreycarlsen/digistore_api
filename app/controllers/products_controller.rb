@@ -22,6 +22,6 @@ class ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-    render "index"
+    render "show"
   end
 end

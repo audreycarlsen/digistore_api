@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
       OrderMailer.confirmation(@order.id).deliver
       render "show"
     else
-      render :status => 400
+      render text: 'There was a problem processing your order.', :status => 400
     end
   end
 

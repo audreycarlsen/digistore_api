@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
       quantity:      item_params[:quantity],
       current_price: item_params[:current_price])
     @item.save
-    render "index"
+    render "show"
   end
 
   def update
@@ -18,13 +18,13 @@ class ItemsController < ApplicationController
     @item.update(
       quantity:      item_params[:quantity],
       current_price: item_params[:current_price])
-    render "index"
+    render "show"
   end
 
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    render "index"
+    render "show"
   end
 
   private
